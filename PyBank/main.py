@@ -1,5 +1,3 @@
-#import csv file
-from ipaddress import summarize_address_range
 import os
 import csv
 
@@ -13,65 +11,67 @@ import csv
 #The greatest increase in profits (date and amount) over the entire period
 #The greatest decrease in profits (date and amount) over the entire period
 
+py_bank = os.path.join("Resources", "budget_data.csv")
 
-
-#build path for csv
-#referenced in class python activities 2 module 8
-csvpath = os.path.join("Resources", "budget_data.csv")
-#print(csvpath)
-
-# #define variables from csv
-months_total = []
-profit_loss = []
-
-with open(csvpath, encoding='utf-8') as csvfile:
-
-# CSV reader specifies delimiter and variable that holds contents
-    csvreader = csv.reader(csvfile, delimiter=",")
-    #print(csvreader)
-
+#code from Dwight meeting with study group
+with open(py_bank) as csvfile:      
+    csvreader = csv.reader(csvfile, delimiter=",")      
     
+    # Skip over the csv file header on the first row
+    next(csvreader)      
+    # # Pass the raw text data out as a list     
+    csv_data = list(csvreader)          
+    for row in csv_data:
+        # print(f"{row[0]:8}  {int(row[1]):14,.0f}")
 
-# Read the header row first (skip this step if there is now header)
-    csv_header = next(csvreader)
-    #print(f"CSV Header: {csv_header}")
+    # for row in csv_data:
+        months = [row[0] for row in csv_data]
+    total_months = len(months)
+    # print(total_months)
 
-# Read each row of data after the header
-    #csvdata = list(csvreader)
-    for row in csvreader:
-         #print(row)
+    # for row in csv_data:
+    profit = [int(row[1]) for row in csv_data]
+    sum_profit = sum(profit)
+    # print(sum_profit)
 
-#Add the total number of months (row 0 of the csv)
-#referenced Python activity 1 module 9 
-        months_total.append(row[0])
-        profit_loss.append(int(row[1]))
-        # print(profit_loss)
-    #print(len(months_total))
-        
-    # print(int(row[1]))
-    print ("Financial Analysis")
-    print ("----------------------------")
-    print (f"Total Months: {len(months_total)}")
-    
-    #total not matching homework
-    profit_sum = sum(profit_loss)
-#     x = 0
-#     for x in profit_loss:
-#         sum = sum + x
-# #     print(int(row[1]))
-# # print(sum)
+    change_profitloss = [[profit[i] - profit [i-1], months[i]] for i in range(1, total_months)]
+    # print(change_profitloss)
 
-    print(f"Total : {profit_sum}")
+    average_change = [profit[i] - profit[i-1] for i in range(1, total_months)]
+    # print(average_change)
 
-#referenced Python activity 3 module 7
-#not quite right - need to figure out change between months then average
-    average_sum = profit_sum / len(profit_loss)
-    # def average(nums):
-    #     sum = 0
-    #     for x in nums:
-    #         sum = sum + x
-    #         print(sum)
-    #     avg = sum / len(profit_loss)
-    #     return avg
-        
-    print(f"Average Change: {average_sum}")
+    print(" ")
+    print("Financial Analysis")
+    print("----------------------------")
+    print(f"Total Months: {total_months}")
+    print(f"Total: ${sum_profit}")
+    print(f"Average Change: ${int(sum(average_change)/total_months)}")
+    print(f"Greatest Increase in Profits: {max(change_profitloss)}")
+    print(f"Greatest Decrease in Profits: {min(change_profitloss)}")
+
+# https://stackoverflow.com/questions/48959098/how-to-create-a-new-text-file-using-python/48964410
+# When writing a .txt file, use "x" if the file doesn't exist and use "w" if file exists and needs to be written/changed/appended
+# https://www.freecodecamp.org/news/python-new-line-and-how-to-python-print-without-a-newline/#:~:text=The%20new%20line%20character%20in%20Python%20is%20%5Cn%20.,used%20to%20separate%20the%20lines
+# Use "\n" in the f.write string to move text to next line for better file viewing
+
+# with open("Analysis/PyBank_Analysis.txt", "x") as f:
+with open("Analysis/PyBank_Analysis.txt", "w") as f:
+    f.write("Financial Analysis\n")
+    f.write("------------------\n")
+    f.write(f"Total months: {total_months}\n")
+    f.write(f"Total: ${sum_profit}\n")
+    f.write(f"Average Change: ${int(sum(average_change)/total_months)}\n")
+    f.write(f"Greatest Increase in Profits: {max(change_profitloss)}\n")
+    f.write(f"Greatest Decrease in Profits: {min(change_profitloss)}\n")
+
+
+
+
+# Example - Final Output
+# Financial Analysis
+# ----------------------------
+# Total Months: 86
+# Total: $38382578
+# Average  Change: $-2315.12
+# Greatest Increase in Profits: Feb-2012 ($1926159)
+# Greatest Decrease in Profits: Sep-2013 ($-2196167)
