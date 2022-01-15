@@ -5,8 +5,6 @@ import csv
 #The total number of months included in the dataset
     #add number of months from list
 #The net total amount of "Profit/Losses" over the entire period
-    #add profits, add loss
-    #total profit = prfits-loss
 #Calculate the changes in "Profit/Losses" over the entire period, then find the average of those changes
 #The greatest increase in profits (date and amount) over the entire period
 #The greatest decrease in profits (date and amount) over the entire period
@@ -21,11 +19,11 @@ with open(py_bank) as csvfile:
     next(csvreader)      
     # # Pass the raw text data out as a list     
     csv_data = list(csvreader)          
-    for row in csv_data:
+    # for row in csv_data:
         # print(f"{row[0]:8}  {int(row[1]):14,.0f}")
 
     # for row in csv_data:
-        months = [row[0] for row in csv_data]
+    months = [row[0] for row in csv_data]
     total_months = len(months)
     # print(total_months)
 
