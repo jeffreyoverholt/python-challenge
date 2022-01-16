@@ -37,6 +37,7 @@ with open(py_poll) as csvfile:
 
     # {"candidate": 0, "candidate2": 1, "Candidate3": 2}
     set_candidates = set(candidates)
+    print(set_candidates)
     # [list_candidates.append(i) for i in candidates if i not in list_candidates]
     # print(set_candidates)
     # print(len(list_candidates))
@@ -45,7 +46,17 @@ with open(py_poll) as csvfile:
     vote_book = {x : 0 for x in set_candidates}
     for candidate in candidates :
         vote_book[candidate] = vote_book[candidate] + 1
+        # vote_book[candidate] = (vote_book[candidate] + 1) / total_votes
         # vote_book[candidate]["Votes"] = vote_book[candidate]["votes"] + 1
+    print(vote_book)
+
+    # vote_book[candidate] = (vote_book[votes] + 1) / total_votes
+    # print(vote_book)
+
+    # vote_book = {x : 0 for x in set_candidates}
+    # for candidate in candidates :
+    #     vote_book[candidate] = (vote_book[candidate] + 1) / total_votes
+    # print(f"{vote_book[candidate]:,%}")
     
     win_candidate = 0
     winner_votes = 0
@@ -54,12 +65,22 @@ with open(py_poll) as csvfile:
         if votes > winner_votes:
             win_candidate = candidate
             winner_votes = votes
-    print()
+        # print(win_candidate)
+        # print(winner_votes)
+    print(win_candidate, winner_votes)
+
+    # for [candidate, votes] in vote_book.items():
+    #     candidate_percent = votes / total_votes
+
+        
+
+    # # winner_percent = winner_votes / total_votes
+    # print(f"{candidate_percent : .0%}")
 
 
     # The total number of votes each candidate won
     
-    count = 0
+    # count = 0
 
             
 

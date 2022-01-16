@@ -43,7 +43,7 @@ with open(py_bank) as csvfile:
     print("----------------------------")
     print(f"Total Months: {total_months}")
     print(f"Total: ${sum_profit}")
-    print(f"Average Change: ${int(sum(average_change)/total_months)}")
+    print(f"Average Change: ${float(sum(average_change)/(total_months-1)):,.2f}")
     print(f"Greatest Increase in Profits: {max(change_profitloss)}")
     print(f"Greatest Decrease in Profits: {min(change_profitloss)}")
 
