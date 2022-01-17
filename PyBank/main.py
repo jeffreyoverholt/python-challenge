@@ -37,6 +37,11 @@ with open(py_bank) as csvfile:
 
     average_change = [profit[i] - profit[i-1] for i in range(1, total_months)]
     # print(average_change)
+    max_profit = (max(change_profitloss)[0])
+    max_profit_month = (max(change_profitloss)[1])
+    min_profit = (min(change_profitloss)[0])
+    min_profit_month = (min(change_profitloss)[1])
+
 
     print(" ")
     print("Financial Analysis")
@@ -44,8 +49,8 @@ with open(py_bank) as csvfile:
     print(f"Total Months: {total_months}")
     print(f"Total: ${sum_profit}")
     print(f"Average Change: ${float(sum(average_change)/(total_months-1)):,.2f}")
-    print(f"Greatest Increase in Profits: {max(change_profitloss)}")
-    print(f"Greatest Decrease in Profits: {min(change_profitloss)}")
+    print(f"Greatest Increase in Profits: {max_profit_month}, (${max_profit})")
+    print(f"Greatest Decrease in Profits: {min_profit_month}, (${min_profit})")
 
 # https://stackoverflow.com/questions/48959098/how-to-create-a-new-text-file-using-python/48964410
 # When writing a .txt file, use "x" if the file doesn't exist and use "w" if file exists and needs to be written/changed/appended
@@ -59,8 +64,8 @@ with open("Analysis/PyBank_Analysis.txt", "w") as f:
     f.write(f"Total months: {total_months}\n")
     f.write(f"Total: ${sum_profit}\n")
     f.write(f"Average Change: ${int(sum(average_change)/total_months)}\n")
-    f.write(f"Greatest Increase in Profits: {max(change_profitloss)}\n")
-    f.write(f"Greatest Decrease in Profits: {min(change_profitloss)}\n")
+    f.write(f"Greatest Increase in Profits: {max_profit_month}, (${max_profit})\n")
+    f.write(f"Greatest Decrease in Profits: {min_profit_month}, (${min_profit})\n")
 
 
 

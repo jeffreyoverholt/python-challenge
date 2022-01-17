@@ -30,14 +30,14 @@ with open(py_poll) as csvfile:
     # The total number of votes cast
     votes = [row[0] for row in csv_data]
     total_votes = len(votes)
-    print(total_votes)
+    # print(total_votes)
     
     # A complete list of candidates who received votes
     candidates = [row[2] for row in csv_data]
 
     # {"candidate": 0, "candidate2": 1, "Candidate3": 2}
     set_candidates = set(candidates)
-    print(set_candidates)
+    # print(set_candidates)
     # [list_candidates.append(i) for i in candidates if i not in list_candidates]
     # print(set_candidates)
     # print(len(list_candidates))
@@ -48,7 +48,7 @@ with open(py_poll) as csvfile:
         vote_book[candidate] = vote_book[candidate] + 1
         # vote_book[candidate] = (vote_book[candidate] + 1) / total_votes
         # vote_book[candidate]["Votes"] = vote_book[candidate]["votes"] + 1
-    print(vote_book)
+    # print(vote_book)
 
     # vote_book[candidate] = (vote_book[votes] + 1) / total_votes
     # print(vote_book)
@@ -59,7 +59,7 @@ with open(py_poll) as csvfile:
     # print(f"{vote_book[candidate]:,%}")
     vote_book_alternate = {
         "candidates_votes": {
-            "O'Tooley": 105630,
+            "OTooley": 105630,
             "Correy": 704200,
             "Li": 492940,
             "Kahn": 2218231
@@ -92,7 +92,7 @@ with open(py_poll) as csvfile:
     print(f'Kahn: {(vote_book_alternate["candidates_votes"]["Kahn"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["Kahn"]})')
     print(f'Correy: {(vote_book_alternate["candidates_votes"]["Correy"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["Correy"]})')
     print(f'Li: {(vote_book_alternate["candidates_votes"]["Li"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["Li"]})')
-    # print(f'O'Tooley: {(vote_book_alternate["candidates_votes"]["O'Tooley"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["O'Tooley"]})')
+    print(f'O\'Tooley: {(vote_book_alternate["candidates_votes"]["OTooley"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["OTooley"]})')
     print("----------------------------")
     print(f"Winner: {win_candidate}")
     print("----------------------------")
@@ -106,7 +106,7 @@ with open("Analysis/PyPoll_Analysis.txt", "w") as f:
     f.write(f'Kahn: {(vote_book_alternate["candidates_votes"]["Kahn"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["Kahn"]})\n')
     f.write(f'Correy: {(vote_book_alternate["candidates_votes"]["Correy"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["Correy"]})\n')
     f.write(f'Li: {(vote_book_alternate["candidates_votes"]["Li"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["Li"]})\n')
-    # f.write(f'O'Tooley: {(vote_book_alternate["candidates_votes"]["O'Tooley"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["O'Tooley"]})\n')
+    f.write(f'O\'Tooley: {(vote_book_alternate["candidates_votes"]["OTooley"]) / total_votes:.3%} ({vote_book_alternate["candidates_votes"]["OTooley"]})\n')
     f.write("------------------\n")
     f.write(f"Winner: {win_candidate}\n")
     f.write("------------------\n")
