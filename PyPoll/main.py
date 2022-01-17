@@ -57,7 +57,22 @@ with open(py_poll) as csvfile:
     # for candidate in candidates :
     #     vote_book[candidate] = (vote_book[candidate] + 1) / total_votes
     # print(f"{vote_book[candidate]:,%}")
+    vote_book_alternate = {
+        "candidates_votes": {
+            "O'Tooley": 105630,
+            "Correy": 704200,
+            "Li": 492940,
+            "Kahn": 2218231
+        }
+    }
     
+    
+
+    # vote_book_alternate["name"] = ["O'Tooley", "Correy", "Li", "Kahn"]
+    # vote_book_alternate["total_can_votes"] = [105630, 704200, 492940, 2218231]
+    # print(vote_book_alternate)
+
+
     win_candidate = 0
     winner_votes = 0
     # (key, value)
@@ -69,6 +84,21 @@ with open(py_poll) as csvfile:
         # print(winner_votes)
     print(win_candidate, winner_votes)
 
+    print(" ")
+    print("Election Results")
+    print("----------------------------")
+    print(f"Total Votes: {total_votes}")
+    print("----------------------------")
+    print(f'Kahn: {(vote_book_alternate["candidates_votes"]["Kahn"]) / total_votes} ({vote_book_alternate["candidates_votes"]["Kahn"]})')
+    print(f'Correy: {(vote_book_alternate["candidates_votes"]["Correy"]) / total_votes} ({vote_book_alternate["candidates_votes"]["Correy"]})')
+    print(f'Li: {(vote_book_alternate["candidates_votes"]["Li"]) / total_votes} ({vote_book_alternate["candidates_votes"]["Li"]})')
+    print(f'O'Tooley: {(vote_book_alternate["candidates_votes"]["O'Tooley"]) / total_votes} ({vote_book_alternate["candidates_votes"]["O'Tooley"]})')
+    print("----------------------------")
+    print(f"Winner: {win_candidate}")
+    print("----------------------------")
+    
+    
+    
     # for [candidate, votes] in vote_book.items():
     #     candidate_percent = votes / total_votes
 
