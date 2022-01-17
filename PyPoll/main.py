@@ -92,10 +92,24 @@ with open(py_poll) as csvfile:
     print(f'Kahn: {(vote_book_alternate["candidates_votes"]["Kahn"]) / total_votes} ({vote_book_alternate["candidates_votes"]["Kahn"]})')
     print(f'Correy: {(vote_book_alternate["candidates_votes"]["Correy"]) / total_votes} ({vote_book_alternate["candidates_votes"]["Correy"]})')
     print(f'Li: {(vote_book_alternate["candidates_votes"]["Li"]) / total_votes} ({vote_book_alternate["candidates_votes"]["Li"]})')
-    print(f'O'Tooley: {(vote_book_alternate["candidates_votes"]["O'Tooley"]) / total_votes} ({vote_book_alternate["candidates_votes"]["O'Tooley"]})')
+    # print(f'O'Tooley: {(vote_book_alternate["candidates_votes"]["O'Tooley"]) / total_votes} ({vote_book_alternate["candidates_votes"]["O'Tooley"]})')
     print("----------------------------")
     print(f"Winner: {win_candidate}")
     print("----------------------------")
+
+
+with open("Analysis/PyPoll_Analysis.txt", "w") as f:
+    f.write("Election Results\n")
+    f.write("------------------\n")
+    f.write(f"Total Votes: {total_votes}\n")
+    f.write("------------------\n")
+    f.write(f'Kahn: {(vote_book_alternate["candidates_votes"]["Kahn"]) / total_votes} ({vote_book_alternate["candidates_votes"]["Kahn"]})\n')
+    f.write(f'Correy: {(vote_book_alternate["candidates_votes"]["Correy"]) / total_votes} ({vote_book_alternate["candidates_votes"]["Correy"]})\n')
+    f.write(f'Li: {(vote_book_alternate["candidates_votes"]["Li"]) / total_votes} ({vote_book_alternate["candidates_votes"]["Li"]})\n')
+    # f.write(f'O'Tooley: {(vote_book_alternate["candidates_votes"]["O'Tooley"]) / total_votes} ({vote_book_alternate["candidates_votes"]["O'Tooley"]})\n')
+    f.write("------------------\n")
+    f.write(f"Winner: {win_candidate}\n")
+    f.write("------------------\n")
     
     
     
