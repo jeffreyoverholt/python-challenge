@@ -63,7 +63,7 @@ with open("Analysis/PyBank_Analysis.txt", "w") as f:
     f.write("------------------\n")
     f.write(f"Total months: {total_months}\n")
     f.write(f"Total: ${sum_profit}\n")
-    f.write(f"Average Change: ${int(sum(average_change)/total_months)}\n")
+    f.write(f"Average Change: ${float(sum(average_change)/(total_months-1)):,.2f}\n")
     f.write(f"Greatest Increase in Profits: {max_profit_month}, (${max_profit})\n")
     f.write(f"Greatest Decrease in Profits: {min_profit_month}, (${min_profit})\n")
 
